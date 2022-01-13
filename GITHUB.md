@@ -12,11 +12,15 @@
 
 ### Repository 생성 및 파일 올리기
 
-* `git remote` : `git remote add {단축 이름} {url}`
+* `git remote add` :  경로 설정 `git remote add {단축 이름} {url}`
+
+  `git remote remove` : 경로 제거`git remote remove {단축이름}`
+
+  `-v` : 설정된 경로 이름 확인
 
 * `git push` : `git push {리모트 저장소 이름} {브랜치 이름}`
 
-  `-u` : master라는 현재 브랜치를 자동으로 origin 이라는 원격 저장소의 master 브랜치로 연결
+  `-u` : (set upstream) master라는 현재 브랜치를 자동으로 origin 이라는 원격 저장소의 master 브랜치로 연결
 
  ```bash
  # git으로 원격 저장소 설정을 할 때, origin이라는 별명을 가진 해당하는 주소(경로)로 업로드 할 수 있도록 설정
@@ -107,8 +111,15 @@ $ git clone {Repository_주소}
 
 ![image-20220113112942278](GITHUB.assets/image-20220113112942278.png)
 
+
+
 2. 같은 파일을 pull 받지 않고 push 했을 때
    * 같은 위치를 변경 했을때, 자동으로 합칠 수 없다. (둘 중에 뭐쓸지 물어봄)
    * 그냥 변경 후에 다시 add commit push 하면 된다.
 
 ![image-20220113131104340](GITHUB.assets/image-20220113131104340-16420474713121.png)
+
+
+
+
+
