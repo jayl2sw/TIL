@@ -71,6 +71,8 @@ $ git switch -c {다른 브랜치 이름}
 
 ![image-20220113160512016](branch.assets/image-20220113160512016.png)
 
+
+
 * **주의사항**
 
   git switch 하기 전에 commit 하셨나요? 
@@ -78,3 +80,66 @@ $ git switch -c {다른 브랜치 이름}
   add, commit을 안하면 파일이 어느 브랜치에 있는지 모른다 
 
   
+
+---
+
+### git merge
+
+`merge` : 두개의 branch를 합친다
+
+```bash
+# master에서 가져올 버전이 있는 branch를 가져온다
+$ git merge {가져올 branch}
+```
+
+* `Fast-forward` : master에 변화가 없을 때, 
+  * 두개를 합쳤을 때, 새로운 버전을 만드는 것이 아닌 dev가 master한테 감
+
+![image-20220113164118600](branch.assets/image-20220113164118600.png)
+
+​		
+
+* `Merge made by the 'ort' strategy ` : 3-way Merge (merge commit)
+  * master에 새로운 커밋 버전이 만들어 지면서 두개 합침
+
+![image-20220113164849062](branch.assets/image-20220113164849062.png)
+
+* : w q (write quit)
+
+* if `i` or `a` or `insert` 를 누르면 `--끼워넣기--` 생김
+  * 수정 할 수 있는 상태가 됨, 수정 끝나면 esc
+
+
+
+![image-20220113165343443](branch.assets/image-20220113165343443.png)
+
+<Merge 후엔 branch 삭제>
+
+
+
+---
+
+### conflict
+
+* 둘이서 똑같은 파일의 똑같은 줄 수정
+
+![image-20220113170148278](branch.assets/image-20220113170148278.png)
+
+
+
+* 수정한 후 add - commit - push 하면 된다.
+
+![image-20220113170434278](branch.assets/image-20220113170434278.png)
+
+
+
+---
+
+< git add . >
+
+현재 폴더를 모두 add
+
+따라서 상위 폴더에 있는 수정사항들은 untracked
+
+=> git status 자주 확인
+
