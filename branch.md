@@ -26,8 +26,17 @@
 
 ### branch 명령어 
 
-```bash
+* 브랜치 `생성, 삭제, 조회` 명령어
 
+```bash
+#브랜치 조회
+$ git branch
+
+#원격 저장소의 브랜치 목록 확인
+$ git branch -r
+
+# 브랜치 생성
+$ git branch {branch_name}
 ```
 
 

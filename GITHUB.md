@@ -18,6 +18,10 @@
 
   `-v` : 설정된 경로 이름 확인
 
+**Repository** : Google Drive 에서 폴더 같은 개념
+
+* `git remote` : `git remote add {단축 이름} {url}`
+
 * `git push` : `git push {리모트 저장소 이름} {브랜치 이름}`
 
   `-u` : (set upstream) master라는 현재 브랜치를 자동으로 origin 이라는 원격 저장소의 master 브랜치로 연결
@@ -118,8 +122,4 @@ $ git clone {Repository_주소}
    * 그냥 변경 후에 다시 add commit push 하면 된다.
 
 ![image-20220113131104340](GITHUB.assets/image-20220113131104340-16420474713121.png)
-
-
-
-
 
