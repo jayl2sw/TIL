@@ -47,6 +47,8 @@ $ git branch -d {branch_name}
 $ git branch -D {branch_name}
 ```
 
+![image-20220113160411512](branch.assets/image-20220113160411512.png)
+
 
 
 ---
@@ -67,8 +69,12 @@ $ git switch -c {다른 브랜치 이름}
 
 ```
 
+![image-20220113160512016](branch.assets/image-20220113160512016.png)
+
 * **주의사항**
 
   git switch 하기 전에 commit 하셨나요? 
 
   add, commit을 안하면 파일이 어느 브랜치에 있는지 모른다 
+
+  
