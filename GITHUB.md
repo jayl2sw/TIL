@@ -12,9 +12,9 @@
 
 ### Repository 생성 및 파일 올리기
 
-* `git remote` : `git remote add <단축 이름> <url>`
+* `git remote` : `git remote add {단축 이름} {url}`
 
-* `git push` : `git push <리모트 저장소 이름> <브랜치 이름>`
+* `git push` : `git push {리모트 저장소 이름} {브랜치 이름}`
 
   `-u` : master라는 현재 브랜치를 자동으로 origin 이라는 원격 저장소의 master 브랜치로 연결
 
@@ -68,8 +68,31 @@ $ git rm {file_name}
 
 
 
+---
+
 ### Repository에서 파일 받아오기
 
 1. `pull` : git을 통해서 원격 저장소에 있는 버전과, 로컬에 있는 버전을 동일하게 만드는 방법 
    * git에 대한 정보가 있을 때만 사용 가능하다.
-2. `clone` : 제일 처음 원격 저장소에 있는 내용을 받아올 때
+   * 다른 곳에서 작업한 내용들을 집에서 작업할 때 사용
+   * **작업전에 항상 pull 작업을 해야한다.**
+     * 원격 저장소의 변화를 먼저 통합시켜야 한다.
+2. `clone` : 제일 처음 원격 저장소에 있는 내용을 받아올 때(git에 대한 설정,log 등 다 남아있다.)
+   * 주소를 찾아야 한다,  이미 해당하는 폴더가 있으면 clone이 되지 않음
+
+```bash
+$ git clone {Repository_주소}
+
+$ git pull {원격 저장소 별명} {브랜치 이름}
+```
+
+![image-20220113111020254](GITHUB.assets/image-20220113111020254.png)
+
+* `merge` : 두개의 commit을 합치는 것 
+
+![image-20220113112942278](GITHUB.assets/image-20220113112942278.png)
+
+* :wq 하면 나올 수 있다.
+
+
+
