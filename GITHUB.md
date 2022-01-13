@@ -12,6 +12,8 @@
 
 ### Repository 생성 및 파일 올리기
 
+**Repository** : Google Drive 에서 폴더 같은 개념
+
 * `git remote` : `git remote add {단축 이름} {url}`
 
 * `git push` : `git push {리모트 저장소 이름} {브랜치 이름}`
@@ -112,3 +114,6 @@ $ git clone {Repository_주소}
    * 그냥 변경 후에 다시 add commit push 하면 된다.
 
 ![image-20220113131104340](GITHUB.assets/image-20220113131104340-16420474713121.png)
+
+
+
