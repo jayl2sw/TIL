@@ -27,6 +27,14 @@
  git push -u origin master 
  ```
 
- 
+* `user.name ` `user.email` : commit 한 사람이 누군지 알려주는 기능
+
+```bash
+cat .git/config # .git에 대한 정보를 볼 수 있다.
+```
+
+
+
+
 
 Git ignore
