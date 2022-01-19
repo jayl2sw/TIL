@@ -1,4 +1,4 @@
-import check
+from my_modules.math import add as a
 
 
-print(check.NAME)
+print(a(1,2))

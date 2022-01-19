@@ -1,6 +1,10 @@
 # Python
 
-## python 의 주요기능
+[TOC]
+
+## 1. Python Basic - (1)
+
+### 파이썬 기능
 
 `저장  `: dust = 60  dust에 60을 저장한다.
 
@@ -45,7 +49,7 @@ while n < 3: # n이 3
 
 ```python
 for var in range:
-    
+    pass
 ```
 
 
@@ -70,7 +74,7 @@ for var in range:
 
 ### API
 
-##### Json(JavaScript Object Notation)
+**Json(JavaScript Object Notation)**
 
 * 데이터만을 주고 받기 위한 표기법
 
@@ -92,13 +96,13 @@ for var in range:
 
 
 
-# 2022-01-17
+## 2. Python Basic - (2)
 
 **Program :** 일련의 명령어의 모음
 
 언어 : 자신의 **생각을 나타내고 전달**하기 위해 사용하는 체계
 
-#### 컴퓨터 프로그래밍언어
+### 컴퓨터 프로그래밍언어
 
 선언전 지식 : 사실에 대한 내용
 
@@ -128,7 +132,7 @@ for var in range:
 
 에러의 특정 
 
-#### 식별자(Identifiers)	
+### 식별자(Identifiers)	
 
 * 변수의 이름을 어떻게 지을 수 있을 까?
 * 영문 알파벳, 언더스코어, 숫자
@@ -143,7 +147,7 @@ red_apple <- snake case
 
 
 
-#### 사용자 입력
+### 사용자 입력
 
 `input([prompt])` 
 
@@ -195,7 +199,7 @@ red_apple <- snake case
 
 비시퀀스형: 세트, 딕셔너리
 
-#### List
+### List
 
 * 숫서를 가지는 0개 이상의 객체를 참조하는 자료형 
   * 생성된 이후 내용 변경이 가능
@@ -273,7 +277,7 @@ dictionary를 변환하는 경우 key만 나온다
 
 
 
-## 연산자
+### 연산자
 
 #### 기타 : 인덱싱(Indexing)
 
@@ -308,7 +312,7 @@ array[a:b:c] => a 부터 b 전까지 c씩 띄워서
 
 
 
-### 정리
+#### 정리
 
 숫자 / boolean / None
 
@@ -322,11 +326,11 @@ String = 문자열의 나열
 
 {dictionary} = key를 통해서 value에 접근 key:중복 불가능, 변경 불가능 value 
 
-## 조건문
+### 조건문
 
-### if, elif, else
+#### if, elif, else
 
-### 조건 표현식 (list.comprehension)
+#### 조건 표현식 (list.comprehension)
 
 ```python
 value = num if num >= 0 else -num
@@ -337,19 +341,19 @@ value = num if num >= 0 else -num
 
 
 
-## 반복문
+### 반복문
 
-### for (통 만들기!)
+#### for (통 만들기!)
 
 * for반복 가능한 애들을 꺼내준다 
 
-### while (조건 생각!)
+#### while (조건 생각!)
 
 * 조건이 참인 동안 실행 '종료조건(거짓)'
 
 
 
-### dictionary 순회
+#### dictionary 순회
 
 ```python
 grades = {'kim': 80, 'lee':100}
@@ -366,7 +370,7 @@ for key, value in grades.items():
 
 
 
-### enumerate 순회
+#### enumerate 순회
 
 ```python
 members = ['민수', '영희', '철수']
@@ -392,7 +396,7 @@ cubic_list
 
 
 
-### 반복문 제어 
+#### 반복문 제어 
 
 `break` : 반복문을 즉시 종료시킨다.
 
@@ -453,13 +457,13 @@ for i in range(3):
 
 "Keep it simple, stipid"
 
-### 성능 (loop & map & list comp)
+#### 성능 (loop & map & list comp)
 
 * for -> 버전이 올라가면서 성능이 향상되었다.
 
 
 
-## 함수 (function)
+## 3. 함수 (function)
 
 * `추상화 (Abstraction)` : 복잡한 내용을 모르더라도 사용할 수 있도록(블랙박스)
   * 재사용성, 가독성, 생산성 up
@@ -468,7 +472,7 @@ for i in range(3):
 
   
 
-## 함수의 정의
+### 함수의 정의
 
 * `함수` : 특정한 기능을 하는 코드의 조각 (묶음)
   * 매번 다시 작성하지 않고 필요 시에만 호출하여 간편히 사용.
@@ -485,7 +489,7 @@ def function_name(parameter):
     return output
 ```
 
-#### 기본구조
+**기본구조**
 
 * 선언과 호출, 입력, 문서화, 범위, 결과값
 
@@ -608,9 +612,33 @@ print(numbers)
 
 
 
----
+### 함수의 문서화 (Doc-String)
 
-## 모듈과 패키지 
+* 함수나 클래스의 설명
+
+* Naming Convention
+
+  
+
+###  함수의 응용
+
+`map(function, iterable)`: iterable한 객체를 하나하나 모두 function을 적용해서 map 객체를 반환
+
+`filter(function, iterable)` : 결과가 True인 것들만 filter object로 반환
+
+`zip(*iterables)` : 복수의 iterable을 모아 튜플을 원소로 하는 zip object를 반환
+
+`lambda [parameter]: 표현식` : 결과값을 반환하는 함수
+
+`재귀 함수(recursive function)`
+
+
+
+
+
+
+
+## 4. 모듈과 패키지 
 
 * `module` : 특정기능을 하는 코드를 python_file(.py) 단위로 작성한 것
 * `package` : 특정 기능과 관련된 여러 모듈의 집합
@@ -660,7 +688,8 @@ $ pip install -r requirement.txt
 
 * 파이썬 표준 라이브러리가 아닌 외부 패키지와 모듈을 사용하는 경우
   * 프로젝트 별로 다른 환경에서 작업할 수 있도록 도와주는 기능
-
+  * 주로 1프로젝트당 1가상환경
+  
 * Python 3.5부터 가상환경 활성화 가능 
 
 ```bash
@@ -668,4 +697,5 @@ $ python -m venv venv
 $ source venv/Scripts/activate
 ```
 
-## 
+
+
