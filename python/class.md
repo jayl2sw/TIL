@@ -449,7 +449,7 @@ for i in range(3):
     list_a.append(i)
 ```
 
-"Simple is better than complex"
+`"Simple is better than complex"
 
 "Keep it simple, stipid"
 
@@ -457,3 +457,215 @@ for i in range(3):
 
 * for -> 버전이 올라가면서 성능이 향상되었다.
 
+
+
+## 함수 (function)
+
+* `추상화 (Abstraction)` : 복잡한 내용을 모르더라도 사용할 수 있도록(블랙박스)
+  * 재사용성, 가독성, 생산성 up
+
+* `분해 (Decomposition)`
+
+  
+
+## 함수의 정의
+
+* `함수` : 특정한 기능을 하는 코드의 조각 (묶음)
+  * 매번 다시 작성하지 않고 필요 시에만 호출하여 간편히 사용.
+
+
+
+### 사용자 정의 함수
+
+* 구현되어 있는 함수가 없는 경우 사용자가 직접 함수를 작성가능
+
+```python
+def function_name(parameter):
+    # code block
+    return output
+```
+
+#### 기본구조
+
+* 선언과 호출, 입력, 문서화, 범위, 결과값
+
+### 함수의 결과값(Output)
+
+=> 모든 함수는 반드시 하나의 `객체(object)` 반환
+
+* void function
+  * 명시적인 **return값이 없는 경우** None을 반환하고 종료
+
+* value returning function
+  * **return값을 반환**하고 종료 => return 값은 1개
+    * 두 개의 값 리턴 -> tuple 하나
+
+* return vs print
+
+  * `return` : 함수 안에서만 사용되는 키워드
+
+  * `print` : 출력을 위해 사용되는 함수 (개발자가 값을 보기 위해)
+
+    
+
+### 함수의 입력(Input)
+
+* `Parameter` : 함수를 실행할 때, 함수 내부에서 사용되는 식별자
+
+* `Argument` : 함수를 호출 할 때 넣어주는 값
+  * 함수 호출 시 함수의 parameter르르 통해 전달 되는 값
+  * `필수 Argument` : 반드시 전달 되어야 하는 argument
+  * `선택 Argument` : 값을 전달하지 않아도 되는 경우는 기본 값을 전달
+
+```python
+def function(ham ):	# parameter : x
+    return ham
+
+function('spam')	# argument : 'spam'
+```
+
+* 각각 바인딩 
+* `Positional Argument` : 기본적으로 함수 호출 시 Argument는 위치에 따라 함수 내에 전달
+* `Keyword Argument` : 직접 변수의 이름으로 특정 Argument를 전달할 수 있음
+
+```python
+def add(x,y):
+    return x + y
+
+add(1,2) 		# 위치 - 내부에서 바인딩 x = 1; y = 2
+add(y=2, x=1) 	# 키워드 - 직접 x와 y의 값을 각각지정
+add(x=1, 2)		# SyntaxError: positional argument 'follows' keyword argument
+				# 키워드 인자를 사용하는 순간 위치로 바인딩 불가능
+add(1, y=2)		# 위치 지정 먼저 하고 키워드 사용하면 가능하다.
+```
+
+* `Default Arguments Values (Optional)` : 기본값 지정, 함수 호출 시 argument 값을 설정하지 않도록 함 
+
+* `Positional Arguments Packing / Unpacking` 연산자(*) (묶겠다~)
+
+  * 여러개의 Positional Argument를 하나의 필수 parameter(tuple)로 받아서 사용 (*args)
+  * input data를 tuple형식으로 묶음
+  * 뒤에 있으면 좋지만 항상 맨 뒤로 갈 필요는 없다 (함수를 어떻게 정의하느냐에 따라 다르다)
+
+* `Keyword Arguments Packing/  Unpacking` 연산자 (**)
+
+  * 딕셔너리로 묶여서 처리가 된다. (key는 식별자기 때문에 "" 넣지 않음)
+
+  * 항상 맨 마지막에 정의
+
+    *  if not, keyword argument 사용시 **kwargs 변수로 인식됨
+
+      
+
+### 함수의 범위(Scope)
+
+* 변수는 각자의 Life Cycle이 존재
+
+* 함수는 코드 내부에 local scope를 생성 => 블랙박스는 고유의 공간을 가지고 있다.
+
+* 그외의 공간은 global scope이다.
+
+  * `built-in scope` : 파이썬이 실행된 이후부터 영원히 유지
+
+  * `global scope` : 모듈이 호출된 시점 이후 혹은 인터프리터가 끝날 때 까지 유지
+
+  * `local scope` : 함수가 호출될 때 생성, 함수가 종료되면 삭제
+
+* 이름 검색 규칙
+
+  * `Built-in` : 내장 함수, Python 전체
+  * `Global` : file 내
+  * `Enclosed` : 
+  * `Local` : 함수 블럭 내에서만 
+
+  지역적 --> 전역 순 (LEGB)
+
+![image-20220119111825871](class.assets/image-20220119111825871.png)
+
+* `global` : Local scope에서 global 변수 값의 변경
+
+  * global var 사용
+    * 하지만 logic안의 값을 바꾸기 때문에 함수를 활용하여 값을 리턴 받고 바꾸자.
+  * `globals()`, `locals()`
+
+* `nonlocal` : enclosed scope의 변수 값 변경
+
+  
+
+* 해당 scope에 변수가 없는 경우 LEGB rule에 의해 이름을 검색함
+  * 하지만 변수의 수정은 불가능하다.
+  * 따라서 global, nonlocal 사용 
+
+```python
+numbers = [1,2,3,4] 	# 메모리 주소
+
+def new():
+    numbers[0] = 100 	# 새로 만든 변수를 바꾸는 것이 아닌 numbers 메모리 주소에 있는 것을 바꿈
+
+new()
+print(numbers)
+```
+
+
+
+---
+
+## 모듈과 패키지 
+
+* `module` : 특정기능을 하는 코드를 python_file(.py) 단위로 작성한 것
+* `package` : 특정 기능과 관련된 여러 모듈의 집합
+
+```python
+import module
+from module import function
+
+from package import module
+from package.module imrpot function
+```
+
+
+
+### 파이썬 표준 라이브러리(Python Standard Library, PSL)
+
+* 파이썬에 기본적으로 설치된 모듈과 내장 함수 
+
+* 파이썬 패키지 관리자(pip) 명령어
+
+  * `pip install` : 패키지 설치
+    * PyPi라는 곳에 배포된 패키지들을 설치
+  * `pip uninstall` : 패키지 제거
+  * `pip list` : 현재 설치되어 있는 패키지 확인
+  * `pip freeze` : 현재 설치되어 있는 패키지 버전 매핑
+
+```bash
+$ pip freeze > requirement.txt
+$ pip install -r requirement.txt
+```
+
+
+
+### 사용자 모듈과 패키지
+
+* 사용자가 스스로 모듈 만들어 사용
+
+* 패키지는 여러 모듈/하위 패키지로 구조화
+
+  * 활용 예시 : package.module
+
+* 모든 폴더에는 `__init__.py `를 만들어 패키지로 인식
+
+
+
+### 가상환경
+
+* 파이썬 표준 라이브러리가 아닌 외부 패키지와 모듈을 사용하는 경우
+  * 프로젝트 별로 다른 환경에서 작업할 수 있도록 도와주는 기능
+
+* Python 3.5부터 가상환경 활성화 가능 
+
+```bash
+$ python -m venv venv
+$ source venv/Scripts/activate
+```
+
+## 
