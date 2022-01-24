@@ -26,6 +26,12 @@ $ git config --global -l
 
 ---
 
+파일 저장의 단위가 버전이다.
+
+무엇인가를 명령하기 위해너는 결과값을 읽을 줄 알아야 한다.   
+
+---
+
 Working Directory (TIL folder)
 
 Staging Area : Commit  하기 위해서 
@@ -34,15 +40,15 @@ Staging Area : Commit  하기 위해서
 
 Tracking을 안한다? (무엇이 변화했는지 모른다.) 
 
-`add` : 추적 시작
+* `add` : 추적 시작
 
 잘게잘게 짜르고 싶으면 추적상태를 만들어야 한다 (add)
 
-`commit` : 그 상태를 하나 만듬 (Add Version)
+* `commit` : 그 상태를 하나 만듬 (Add Version)
 
 원격저장소 (Github)에 Commit들을 넣음
 
-`push`:이 때, 깃에 있는 것들을 원격 저장소로 넣는 과정
+* `push`:이 때, 깃에 있는 것들을 원격 저장소로 넣는 과정
 
 
 

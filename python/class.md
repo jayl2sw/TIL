@@ -699,3 +699,269 @@ $ source venv/Scripts/activate
 
 
 
+## 4. 데이터 구조 및 활용
+
+### Method (s.v)
+
+#### String (immutable)
+
+* 문자열 검증 메소드
+
+  * `s.find(x)` : x의 첫번 쨰 위치를 반환, 없으면 -1을 반환
+
+  ```python
+  'apple'.find('p')
+  ```
+
+  * `s.index(x`)` :  x의 첫번 쨰 위치를 반환, 없으면 오류 발생
+
+  * `s.isalpha()` : 알파벳 문자여부
+
+    * `is`는 결과값이 boolean (T/F)
+
+  * `s.isupper()` : 대문자 여부
+
+  * `s.islower()` : 소문자 여부
+
+  * `s.istitle()` :타이틀 형식 여부
+
+    * 단어의 첫글자만 대문자
+
+  * `isdecimal()`: 
+
+  * `isdigit()` 
+
+  * `isnumeric()`
+
+    
+
+* 문자열 변경 메소드
+
+  * `s.replace(old,new, [횟수])` : 문자열 바꿔서 반환
+  * `s.strip([chars])` : 특정 문자를 제거 (양방향)
+    * `s.lstrip()` : 왼쪽에 있는 것 제거
+    * `s.rstrip()` : 오른쪽에 있는 것 제거 
+  * `s.split(sep=None, maxsplit = -1)`: 문자열을 특정한 단위로 나눠 (구분자 사용) 리스트로 반환
+  * `'seperator(구분자)'join([iterable])` 구분자로 iterable을 합침
+    * iterable에 문자열이 아닌 값이 있으면 Error 발생 (String의 메서드)
+
+  ```python
+  str = ['1','2','3']
+  print(' ',join(str))
+  
+  numbers=[1,2,3]
+  print(' ',join(map(str,numbers)))
+  ```
+
+  * `s.capitalize()` :
+
+  * `s.title()` : `'`  어퍼스트로피 뒤에도 대문자
+
+  * `s.upper()` :
+
+  * `s.lower()` :
+
+  * `s.swapcase()` : 소문자와 대문자 바꿈
+
+    
+
+#### List = []
+
+* 순서를 가지는 0개 이상의 객체를 참조하는 자료형
+  * 리스트 요소를 변경시키는 것 : mutable
+  * `L.append(x)` : 마지막에 x 추가
+  * `L.insert(i, x)` : i인덱스에 x 삽입
+  * `L.remove(x)` : 리스트 가장 왼쪽에 있는 항목 x를 제거
+  * `L.pop()`: 리스트 가장 마지막을 반환 후 제거
+  * `L.pop(idx)` : 인덱스 idx에 있는 항목을 반환 후 제거
+  * `L.extend(iterable)` : 리스트에 iterable 항목을 추가함 (두 리스트를 합친다. 둘다 리스트 형태여야함)
+  * `L.index(x, start, end)` : 값을 찾아서 인덱스를 반환
+  * `L.reverse()` : 순서를 반대로 뒤집는다. (원본 자체의 순서가 바뀜)
+  * `L.sort()` : 원본 리스트를 정렬한다
+    * `sorted(L) `: 정렬된 리스트르 반환한다.
+  * `L.count(x)` : 원하는 값의 개수를 반환.
+
+
+
+#### Tuple = ()
+
+* 순서를 가지는 0개 이상의 객체를 참조하는 자료형
+* 값에 영향을 미치지 않는 메소드만을 지원
+  * 
+
+
+
+#### Set = {}
+
+* 순서없이 0개 이상의 해시 가능한 객체를 참조하는 자료형 (해시가능한 객체 = 불변 자료형)
+  * `s.copy()` :
+  * `s.add(elem)` : 셋에 값을 추가
+  * `s.update(*others)` : 셋에 한번에 여러가지 값을 추가
+  * `s.remove(elem)` : 셋에서 삭제하고, 없으면 KeyError
+  * `s.discard(elem)` : 셋에서 삭제하고 없어도 에러가 발생하지 않음
+  * `s.pop()` : 임의의 원소를 제거해 반환
+
+
+
+#### Dictionary
+
+* 순서 없이 키-값 쌍으로 이뤄진 객체를 참조하는 자료형
+* key = 해시가능한 불변 자료형만 가능, values = 어떠한 형태든 관계 없음
+  * `d.clear()`
+  * `d.copy()`
+  * `d.keys()`
+  * `d.values()`
+  * `d.items()`
+  * `d.get(key [,default])` : 키를 통해 value를 가져옴, 에러 발생 x
+  * `d.pop(key[,default])` : key가 딕셔너리에 있으면 제거하고 해당 값을 반환
+    * 해당 값이 딕셔너리 내에 없을 경우 default 반환
+    * default값이 없을 경우 keyError
+  * `d.update(key, value)` : 값을 제공하는 key, value로 덮어씁니다.
+
+
+
+### 얕은 복사와 깊은 복사 (Shallow Copy & Deep Copy)
+
+#### 할당(assignment)
+
+* 대입 연산자(=) : 리스트 복사 확인하기
+
+  * 해당 객체에 대한 객체 참조를 복사
+
+  * 두개의 리스트가 모두 바뀐다. 리스트 복사 확인하기
+
+    * 해당 주소의 일부 값을 변경하는 경우 이를 참조하는 모든 변수에 영향
+
+      
+
+#### 얕은 복사(shallow copy)
+
+```python
+#슬라이싱 or list()
+original_list = [1, 2, 3]
+copy_list = original_list[:]
+
+copy_list = list(original_list)
+```
+
+얕은 복사(Shallow Copy) **주의사항**
+
+* 복사하는 리스트의 원소가 주소를 참조하는 경우
+  * 리스트에는 주소가 저장되어있다. (슬라이싱 or list())
+
+```python
+# 2차원일 때
+a = [1, 2, ['a','b']]
+b = a[:]
+
+print(a, b)
+b[2][0] = 0
+print(a, b)
+```
+
+
+
+#### 깊은 복사 (deep copy)
+
+* 주소를 그대로 참조 하지 않고 값만 복사해서 저장한다.
+
+```python
+import copy
+a = [1, 2, ['a', 'b']]
+b = copy.deepcopy(a)
+print(a,b)
+b[2][0] = 0
+print(a, b)
+```
+
+
+
+### 디버깅
+
+*  branches : 
+  * 모든 조건을 커버하는가?
+* for loops : 
+  * 원하는 횟수만큼 반복되는가?
+  * 반복문 내 값 변경이 원하는대로 이루어지고 있는가?(결과)
+* while loops : for + 종료조건이 제대로 설정 되었는가?
+* function : 호출, 파라미터, 결과 // type
+
+
+
+* print함수 활용
+* 개발환경 등에서 제공하는 기능 활용
+* Python Tutor 활용 (단순 파이썬 기능인 경우)
+* 에러 메시지가 발생하는 경우 
+  * 해당하는 위치를 찾아 메시지를 해결
+
+* 로직 에러가 발생하는 경우 
+
+  * 명시적인 에러 메시지 없이 예상과 다른 결과가 나온 경우
+
+  
+
+### 에러와 예외
+
+#### 문법에러
+
+* invalid syntax : 안됨
+
+* assign to literal : 문자에 할당
+* `EOL (End Of Line)` : 문장이 제대로 끝나지 않았다.
+* `EOF (End Of File)` : 파일이 제대로 끝나지 않았다.
+
+
+
+#### 예외
+
+*  실행 도중 예상치 못한 상황을 맞이하면, 프로그램 실행을 멈춤
+* `ZeroDivisionError` : 0으로 나누고자 할 때,
+* `NameError` : namespace 상에 이름이 없는 경우 (오타)
+
+* `TypeError` : 타입 불일치, argument 누락
+* `ValueError` :타입은 올바르나 적절하지 않거나 없는 경우
+* `IndexError` : 인덱스가 존재하지 않거나 범위를 벗어나는 경우
+* `KeyErroe` : 키가 없는 경우
+* `ModuleNotFoundError` : 잘못된 모듈을 불러온 경우
+* `ImportError` : 모듈은 있으나 잘못된 함수 or aptjem qnffjdhkTdmf Eo, 
+* `KeyboardInterrupt` : 키보드로 임의로 멈춤
+
+* `IndentationError` : 잘못된 Indentation (띄워쓰기 or tab)
+
+
+
+#### 예외 처리
+
+* 알고리즘 문제보다는 실질적인 개발에 사용된다.
+
+* if else: 의 경우 프로그램이 멈추지만 try, except의 경우에는 계속 진행된다.
+
+  * `try` : 먼저함
+
+  * `except` : 에러 발생시
+
+  * `else` : 에러 발생 안했을 때,
+
+  * `finally` : 두개 공통 마지막에
+
+```python
+try:
+    num = input('숫자입력 :')
+    print(int(num))
+    
+except ValueError as ve:
+    print(f'{err}, 오류가 발생했습니다.')
+
+except ZeroDivisionError as zde:
+    print()
+    
+else:
+    
+finally:
+```
+
+* 발생 가능한 모든 Error 명시 
+* `raise <표현식>, (메시지)`: 예외를 강제로 발생
+  * 실제 프로덕션 코드에서 활용
+* `assert <표현식>, (메시지)` : 예외를 강제로 발생(상태를 검증하는데 사용되며 무조건 Assertion Error 발생)
+  * 특정 조건이 거짓이면 발생, 디버깅 및 테스트 용도
