@@ -1,9 +1,10 @@
+# 클래스
 class Person:
     
     def greeting(self):
         print(f'안녕하세요 {self.name}입니다.')
 
-
+# 인스턴스
 jimin = Person()
 jimin.name = '지민'
 jimin.phone = '01012341234'

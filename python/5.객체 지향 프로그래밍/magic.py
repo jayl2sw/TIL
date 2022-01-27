@@ -11,6 +11,7 @@ class Person:
     def __len__(self):
         return self.height
 
+    # 객체를 프린트 하면 __str__의 리턴 값을 프린트 한다.
     def __str__(self):
         return f'<{self.name}> : {self.age}살'
 
