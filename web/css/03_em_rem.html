@@ -12,9 +12,37 @@
     .rem {
       font-size: 1.5rem;
     }
+    
+    .box {
+      width: 50vw;
+      height: 100px;
+      background-color: orange;
+    }
+
+    .parent {
+      width: 100%;
+      height: 1100px;
+      background-color: gray;
+    }
+
+    .child {
+      width: 50%;
+      height: 100px;
+      background-color: blue;
+    }
   </style>
 </head>
 <body>
+  <div class = "parent">
+    <div class="box">
+      vw Check
+      부모와 상관없이 화면 크기와만 상관사용한다.
+    </div>
+    <div class = "child">
+      % Check 
+      부모 박스에 대한 %이다. 따라서 view에 따라 변하지 않는다.
+    </div>
+  </div>
   <ul class="em">
     <li class="em">1.5em</li>
     <li class="rem">1.5rem</li>

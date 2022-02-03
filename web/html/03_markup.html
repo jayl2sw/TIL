@@ -8,6 +8,12 @@
   <!-- header -->
   <header>
     <!-- 싸피 홈페이지로 이동하는 링크 -->
+    <a href="https://www.ssafy.com">
+      <!-- contents에 해당하는 부분 -->
+      <!-- src=>파일경로 이미지 경로, alt=>대체 문구 UX를 위해 상세하게 작성  -->
+      <img src="ssafy.png" alt="싸피로고">
+    </a>
+    <h1>학생 건강 설문</h1>
   </header>
 
   <!-- section -->
@@ -15,16 +21,40 @@
     <!-- 건강 설문 작성 form -->
     <form action="#">
       <!-- 이름 -->
+      <div>
+        <label for="name">이름을 기재해주세요</label><br>
+        <input id=name type="text" autofocus required>
+      </div>
 
       <!-- 지역 -->
       <div>
+        <label for="region">지역을 선택해주세요.</label><br>
+        <select name="region" id="region" required>
+          <!--  disabled속성을 통해 클릭 못하도록 설정 가능 -->
+          <!--  selected속성을 통해 기초값 설정 가능 -->
+          <option value="">선택</option>
+          <option value="서울">서울</option>
+          <option value="대전">대전</option>
+          <option value="구미">구미</option>
+          <option value="광주">광주</option>
+          <option value="부울경">부울경</option>
+        </select>
       </div>
 
       <!-- 체온 -->
       <div>
+        <p>오늘의 체온을 선택해주세요</p>
+        <!-- checked: 처음부터 체크되어 있다. -->
+        <input id="normal" type="radio" name="temp" value="normal" checked>
+        <label for="normal">37도 미만</label>
+        <br>
+        <input id="warning" type="radio" name="temp" value="warning">
+        <label for="warning">37도 이상</label>
+
       </div>
 
       <!-- 전송 -->
+      <input type="submit" value="Submit">
     </form>
   </section>
 
@@ -34,3 +64,4 @@
   </footer>
 </body>
 </html>
+
