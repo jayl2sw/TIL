@@ -397,7 +397,7 @@ CSS원칙 II
   * 블록 레벨 요소 안에 인라인 레벨 요소가 들어갈 수 있음
 * display: inline
   * 줄 바꿈이 일어나지 않는 행의 일부 요소
-  * content 너비만큼 가로폭을 차지한다.
+  * **content 너비**만큼 가로폭을 차지한다.
   * width, height, margin-top, margin-bottom을 지정할 수 있다.
   * 상하여백은 line-height로 지정한다.
 
@@ -490,3 +490,155 @@ CSS원칙 II
 HTML : 웹 페이지가 어떻게 구조화 되어있는지 알 수 있도록 하는 마크업언어
 
 CSS : 사용자에게 문서(HTML)를 표시하는 방법을 지정하는 언어
+
+
+
+### CSS LAYOUT
+
+#### Float
+
+* 박스를 왼쪽 혹은 오른쪽으로 이동시켜 텍스트를 포함 인라인 요소들이 주변을 wrapping하도록 함
+
+* Normal flow 벗어난다.
+
+* Float 속성
+
+  * left: 요소를 왼쪽에 띄움
+
+  * right: 요소를 오른쪽으로 띄움
+
+  * none: 기본값
+
+    
+
+##### ClearingFloat
+
+* Float는 Normal Flow에서 벗어나 부동상태(떠 있음)
+* 따라서 이후 요소에 Float속성이 적용되지 않도록 Clearing 해주어야 한다.
+  * `::after` 선택한 요소의 맨 마지막 자식으로 가상 요소를 하나 생성
+    * 보통 content 속성과 함께 짝지어 요소에 장식용 콘텐츠를 추가할 때 사용
+  * `clear` 속성 부여
+
+
+
+#### Flexbox (CSS Flexible Box Layout)
+
+* 행과 열 형태로 아이템들을 배치하는 1차원 레이아웃 모델 => 구역 안에서의 배치 가능
+
+  * 수직정렬, 및 간격 조정 가능
+
+    
+
+* 축
+
+  * main axis (메인축)
+  * cross axis (교차축)
+
+* 구성요소
+
+  * Flex Container (부모 요소)
+  * Flex Item (자식 요소)
+
+
+
+* Flex Container (부모 요소)
+  * flexbox 레이아웃을 형성하는 가장 기본적인 모덱
+  * Flex Item들이 놓여있는 영역
+  * display 속성을 flex or inline-flex로 지정
+
+* Flex Item (자식 요소)
+  * 컨테이너에 속해 있는 컨텐츠(박스)
+
+
+
+* Flex 속성
+
+  * `flex-direction`: main axis 기준 방향 설정
+    * 역방향의 경우 HTML태그 선언 순서와 시각적으로 다르니 유의
+
+  * `flex-wrap`: 요소들이 강제로 한줄에 배치 되게 할 것인지 여부 설장
+    * 컨테이너 영영을 벗어나지 않도록 함
+  * `flex-flow`: flex-direction과 flow-wrap을 동시에 설정
+
+  * `justity-content`: Main axis를 기준으로 공간 배분
+    * flex-start, flex-end, center, space-between, space-around, space-evenly
+  * `allign-content` :Cross axis를 기준으로 공간 배분
+
+  * `allign-items`: 모든 아이템을 Cross axis 기준으로 정렬
+    * stretch, flex-start, flex-end, center
+
+  * `allign-self`: 개별아이템을 Cross axis 기분으로 정렬
+    * 해당 속성은 컨테이너가 아닌 개별 아이템에 적용!
+
+  * `flex-grow` : 남은 영역을 아이템에 분배
+
+    * 여분의 공간을 각각의 content에 비율에 맞게 배분 => 원래크기 고려해야 한다.
+
+  * `order` : 배치순서
+
+    * order의 default값은 0이다. 따라서 없는것 보다 -n1이 더 먼저 나온다. 
+
+    
+
+* 활용 레이아웃 - 수직, 수평 가운데 정렬, 카드 배치
+
+​	flexbox froggy
+
+
+
+### Bootstrap
+
+#### CDN(Content Delivery Network)
+
+* 컨텐츠를 효율적으로 전달하기 위해 여러 노드에 가진 네트워크에 데이터를 제공하는 시스템
+* ![image-20220207144348601](Web.assets/image-20220207144348601.png)
+
+`.mt-1` (margin-top):  4px, 0.25rem
+
+`.mx-0` (margin-left,right): 0
+
+`.py-0` (padding-top,bottom): 0
+
+
+
+##### CDN via jsDelivr
+
+* 외부에 있는 파일을 활용해서 적용
+* 언제 다운받아서 사용하는가?
+  * 커스터 마이징 할 때 사용한다~
+
+#### Grid System(Web Design)
+
+* 요소들의 디자인과 배치에 도움을 주는 시스템
+
+* 기본요소
+
+  * Column: 실체 컨텐츠를 포함하는 부분
+  * Gutter : 칼럼과 칼럼 사이의 공간(사이간격)
+  * Container : Column들을 담고 있는  공간
+
+* in Bootstrap
+
+  * flexbox로 제작됨
+
+  * container, rows, colum 으로 컨텐츠를 배치하고 정렬
+
+  * 12개의 column, 6개의 grid breakpoints
+
+    
+
+* Container
+
+  * row 행을 하나 둔다.
+
+    * col-`breakpoint(sm-md-lg-xl-xxl)`-숫자(12 중 얼마나 가져갈지)
+
+      
+
+* bootstrap => 빠른 개발
+  * 컴포넌트 : 웹 구성요소
+    * Card
+    * Cerousel
+    * indicator
+    * Modal
+    * Navbar
