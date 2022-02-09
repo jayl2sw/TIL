@@ -48,7 +48,10 @@ while n < 3: # n이 3
   * 종료조건이 필요없음
 
 ```python
-for var in range:
+for var in range(int_type_variable):
+    pass
+
+for elem in iterative_variable:
     pass
 ```
 
@@ -56,7 +59,7 @@ for var in range:
 
 ### Python 함수
 
-1) Built in Funcion (내장함수 )
+1) Built in Funcion (내장함수)
 
 2. non-built in Function 
 
@@ -102,6 +105,8 @@ for var in range:
 
 언어 : 자신의 **생각을 나타내고 전달**하기 위해 사용하는 체계
 
+
+
 ### 컴퓨터 프로그래밍언어
 
 선언전 지식 : 사실에 대한 내용
@@ -132,11 +137,13 @@ for var in range:
 
 에러의 특정 
 
+
+
 ### 식별자(Identifiers)	
 
 * 변수의 이름을 어떻게 지을 수 있을 까?
 * 영문 알파벳, 언더스코어, 숫자
-* 길이제한 x 대소문자 구별 예약어 x
+* 길이제한x,  대소문자 구별, 예약어 x
 
 ```python
 RedApple
@@ -144,6 +151,12 @@ red_apple <- snake case
 ```
 
 내장 함수나 모듈 등의 이름으로도 만들면 안됨. 기존의 이름에 다른 값을 할당하게 되므로 더 
+
+```python 
+snake_case
+PascalCase
+camelCase
+```
 
 
 
@@ -163,13 +176,12 @@ red_apple <- snake case
 * `None` : 값이 없음을 표현하기 위함
 
 * `int` : 모든 정수타입
-
   * 진수 표현 
     * 2진수 0b, 8진수 0o, 16진수 0x
-
+  
   * Floating point rounding error
     * 부동 소수점에서 실수 연산 과정에서 발생 가능 
-
+  
 * `String Type` : 모든 문자는 str type
 
   * 작은 따옴표나 큰 따옴표를 활용하여 표기
@@ -199,7 +211,7 @@ red_apple <- snake case
 
 비시퀀스형: 세트, 딕셔너리
 
-### List
+#### List
 
 * 숫서를 가지는 0개 이상의 객체를 참조하는 자료형 
   * 생성된 이후 내용 변경이 가능
@@ -209,7 +221,9 @@ red_apple <- snake case
 
 
 
-tuple: 수정 불가능
+#### tuple
+
+* 수정 불가능
 
 tuple 생성 주의사항
 
