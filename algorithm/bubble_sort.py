@@ -7,6 +7,7 @@ def bubble_sort(array, N):
     return array
 
 N = int(input())
-array = list(map(int,input().split()))
+array = list(map(int, input().split()))
 
-print(bubble_sort(array,N))
+print(bubble_sort(array, N))
+

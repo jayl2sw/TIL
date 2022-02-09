@@ -7,7 +7,6 @@ sys.stdin = open('sol1.txt')
 짝수면 False 출력
 
 입력값이 1이라면 # True 출력
-
 """
 
 
