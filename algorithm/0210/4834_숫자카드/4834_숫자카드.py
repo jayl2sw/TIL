@@ -2,6 +2,12 @@ import sys
 
 sys.stdin = open('sample_input.txt')
 
+def max(set):
+    max_val = -int(1e9)
+    for i in set:
+        if max_val < i:
+            max_val = i
+    return max_val
 
 def mode(array):
     d = [0] * 10
@@ -9,6 +15,7 @@ def mode(array):
         d[number] += 1
 
     count = max(d)
+    # d의 길이 (10)
     number = 10 - d[::-1].index(count) - 1
     return number, count
 
