@@ -97,7 +97,9 @@ HTML의 요소는 태그와 내용으로 구성되어있다.
 
 * 단순히 구역을 나누는 것 뿐만 아니라 '의미'를 가지는 태그들을 활용
 
-* 요소의 의미가 명확해지기 때문에 코드의 가독성을 높이고 
+* 요소의 의미가 명확해지기 때문에 코드의 가독성을 높이고 유지보수를 쉽게함
+
+* 검색엔진 최적화를 위해서 메타태그, 시맨틱 태그 등을 통한 마크업 활용 중요!
 
   
 
@@ -135,6 +137,8 @@ HTML의 요소는 태그와 내용으로 구성되어있다.
 
 01_table.html 참고
 
+colspan, rowspan을 활용하여 셀 병합
+
 
 
 #### form
@@ -143,10 +147,15 @@ HTML의 요소는 태그와 내용으로 구성되어있다.
 
 * `<form>` 기본 속성
   * action  : form을 처리할 서버의 URL
+  
   * method : form을 제출할 때 사용한 HTTP 메서드 (Get or Post) (요청을 보내는 방법)
     * GET : 오로지 조회만을 위한 요청 (기본값)
     * POST : 어떠한 행위를 한다 (CRUD)
+    
   * enctype : method가 post인 경우 데이터의 유형
+  
+    * Application/x-www-for-urlencoded: 기본값
+  
     * multipart/form-data : 파일 전송시
 
 
@@ -158,6 +167,7 @@ HTML의 요소는 태그와 내용으로 구성되어있다.
 * `<input>` 대표적인 속성
   * name : form control에 적용되는 이름 (이름/값 페어로 전송됨)
   * value : form control에 적용되는 값 (이름/값 페어로 전송됨)
+  * ?name=value
   * `required, readonly, autofocus, autocomplete, disable, placeholder`i
 
 ##### input label
@@ -377,7 +387,7 @@ h1 {
 
 * 기본적으로 모든 요소의 box-sizing은 content-box
   * Padding을 제외한 순수 contents 영역만을 box로 지정
-* box-sizing을 border-box으로 설정
+* box-sizing을 **border-box**으로 설정
 
 
 
