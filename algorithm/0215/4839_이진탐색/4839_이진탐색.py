@@ -14,6 +14,7 @@ def times(start, end, target):
         else:
             end = middle
 
+
 def findWinner(A, B):
     if A < B:
         return 'A'
@@ -21,6 +22,8 @@ def findWinner(A, B):
         return 0
     else:
         return 'B'
+
+
 T = int(input())
 
 for tc in range(1, T+1):

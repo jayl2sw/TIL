@@ -1,24 +1,29 @@
 import sys
+
 sys.stdin = open('input.txt')
 
 
-def find_destination(array):
-    for i in range(len(array[-1])):
-        if array[-1][i] == 2:
-            return i
+def find_start(array):
+    result = []
+    for i in range(len(array)):
+        if array[0][i] == 1:
+            result.append(i)
+    return result
 
 
-def ladder(array):
-    x = len(array) - 1
-    y = find_destination(array)
-    direction = 2
+def ladder(start, array):
+    dx = [0, 0, 1]
+    dy = [-1, 1, 0]
+    direction = 2 #0일 경우 좌측, 1일
 
-    dx = [0, 0, -1]
-    dy = [1, -1, 0]
-
+    x = 0
+    y = start
     while True:
-        if x == 0:
-            return y
+        if x == 99:
+            if array[x][y] == 2:
+                return True
+            else:
+                return False
 
         if direction == 2:
             for i in range(3):
@@ -28,7 +33,7 @@ def ladder(array):
                 if nx < 0 or ny < 0 or nx >= 100 or ny >= 100:
                     continue
 
-                if array[nx][ny] == 1:
+                if array[nx][ny] != 0:
                     x = nx
                     y = ny
                     direction = i
@@ -40,7 +45,7 @@ def ladder(array):
 
             if nx < 0 or ny < 0 or nx >= 100 or ny >= 100 or array[nx][ny] == 0:
                 direction = 2
-                x = x - 1
+                x += 1
                 y = y
 
             else:
@@ -50,6 +55,8 @@ def ladder(array):
 
 for tc in range(1, 11):
     n = int(input())
-    array = [list(map(int,input().split())) for _ in range(100)]
-    print(f'#{n} {ladder(array)}')
-
+    array = [list(map(int, input().split())) for _ in range(100)]
+    starts = find_start(array)
+    for start in starts:
+        if ladder(start, array):
+            print(f'#{tc} {start}')
