@@ -1,22 +1,26 @@
 # kmp
 
-def kmp(t, p):
-    n = len(t)
+# Pre-Processing
+def make_lps(p):
     m = len(p)
-
-    # Pre-Processing
-    lps = [0] *(m+1)
-    j = 0               # 일치한 개수 == 비교할 패턴 위치
+    lps = [0] * (m + 1)
+    j = 0  # 일치한 개수 == 비교할 패턴 위치
     lps[0] = -1
     for i in range(1, m):
-        lps[i] = j      # p[i] 이전에 일치한 개수
+        lps[i] = j  # p[i] 이전에 일치한 개수
         if p[i] == p[j]:
             j += 1
         else:
             j = 0
     lps[m] = j
-    print(i,j)
-    print(lps)
+
+    return lps
+
+
+def kmp(t, p):
+    n = len(t)
+    m = len(p)
+    lps = make_lps(p)
 
     # Search
     i = 0
