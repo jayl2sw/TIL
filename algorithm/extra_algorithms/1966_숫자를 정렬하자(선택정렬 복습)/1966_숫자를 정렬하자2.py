@@ -5,10 +5,13 @@ sys.stdin = open('input.txt')
 
 def my_sort(n, array):
     for i in range(n-1):
-        min_v = min(array[i+1:])
-        idx = array[i+1:].index(min_v)+i+1
-        if array[i] > min_v:
-            array[i], array[idx] = array[idx], array[i]
+        min_v = int(1e9)
+        for j in range(i+1, n):
+            if array[j] < min_v:
+                min_v = array[j]
+                min_idx = j
+        if array[i] > array[min_idx]:
+            array[i], array[min_idx] = array[min_idx], array[i]
 
     return array
 
