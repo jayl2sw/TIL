@@ -3,13 +3,13 @@ sys.stdin = open('input.txt')
 
 
 def hoarding(n, array):
-    result = 0
-    for idx in range(n-1):
-        max_price = max(array[idx + 1:])
-        if array[idx] < max_price:
-            result += (max_price - array[idx])
-
-    return result
+    result = array[:]
+    max_v = 0
+    for i in range(len(array)-1, -1, -1):
+        if array[i] > max_v:
+            max_v = array[i]
+        result[i] = max_v
+    return sum(result) - sum(array)
 
 
 T = int(input())
