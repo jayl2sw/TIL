@@ -2,15 +2,15 @@ import sys
 sys.stdin = open('input.txt')
 
 def mode_char(candidate, arr):
-    result = 0
-    for char in candidate:
+    max_count = 0
+    for char in set(candidate):     # abc
         count = 0
-        for ch in arr:
+        for ch in arr:          # asdbjadb
             if char == ch:
                 count += 1
-        if result < count:
-            result = count
-    return result
+        if max_count < count:
+            max_count = count
+    return max_count
 
 
 

@@ -8,7 +8,7 @@ def make_skip(pattern):
     for i in range(m):                                      # 패턴의 길이만큼 순회
         skip[ord(pattern[i]) - ord('A')] = m - i - 1        # 스킵[0]이 A 스킵[1]이 B 쭉해서 m-i-1
                                                             # ex) [4, 1, 4, 4, 3, 4, 4, 4, 4, 2, 4]
-                                                            # 글자 위치만큼 빼줍니다.
+    print(skip)                                                            # 글자 위치만큼 빼줍니다.
     return skip                                             # 이게 해당 패턴의 스킵 어레이가 됨 kmp에서 lps느낌
 
 def boyer_moore(pattern, text):

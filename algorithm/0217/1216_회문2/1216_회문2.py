@@ -1,5 +1,8 @@
 import sys
+import time
+
 sys.stdin = open('input.txt')
+start = time.time()  # 시작 시간 저장
 
 # 회문인지 판단
 def palindrome(string):
@@ -18,7 +21,7 @@ def find_palindrome_line(m, string):        # input으로 주어진 회문의 �
             return check                    # 해당 문자열 반환
 
 
-# 대칭 행렬 만들기
+# 대칭 행렬 만들기                              ==> 시간 너무 오래 걸린다!
 def reverse_array(n, array):
     for i in range(n):
         for j in range(n):
@@ -27,6 +30,7 @@ def reverse_array(n, array):
 
 
 # n * n 행렬에서 m 길이의 팰린드롬 찾기
+# 가로 세로 한번에 하는 방법 찾아보기!
 def find_palindrome(n, m, array):
     for i in range(2):                                  # 가로, 세로 탐색
         for i in range(n):                              # n번 째 행까지
@@ -41,10 +45,13 @@ def find_longest_palindrome(array):
     for i in range(100, 0, -1):                         # 찾는 회문의 길이를 100부터 1까지 1씩 줄여가면서
         result = find_palindrome(100, i, array)         # 100 * 100 행렬에서 i길이의 회문 찾음
         if result:                                      # 회문 찾은 즉시
-            return i                              # 회문 반환
+            return i                                    # 회문 반환
+
 
 
 for tc in range(1, 11):
     n = int(input())
-    array = [list(input()) for i in range(100)]               # String으로 받으면 x, y 바꾸지 못한다.
+    array = [list(input()) for i in range(100)]         # String으로 받으면 x, y 바꾸지 못한다.
     print(f'#{tc} {find_longest_palindrome(array)}')
+
+print("time :", time.time() - start)
