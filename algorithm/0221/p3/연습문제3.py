@@ -16,6 +16,7 @@ visited = []
 graph = [[] for _ in range(n + 1)]
 for i in range(0, 2 * k, 2):
     graph[array[i]].append(array[i + 1])
+    graph[array[i + 1]].append(array[i])
 print(graph)
 
 dfs(1, graph)
