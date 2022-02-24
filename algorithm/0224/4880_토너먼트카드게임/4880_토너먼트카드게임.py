@@ -2,27 +2,18 @@ import sys
 sys.stdin = open('input.txt')
 
 def card_game(a, b, refer):
-    if refer[a] == 3:
-        if refer[b] == 1:
-            return b
-        else:
-            return a
-    elif refer[b] == 3:
-        if refer[a] == 1:
-            return a
-        elif refer[a] == 2:
-            return b
+    winner = (refer[a] - refer[b]) % 3
+    if winner % 3 == 2:
+        return b
     else:
-        if refer[a] >= refer[b]:
-            return a
-        else:
-            return b
+        return a
 
 def tournament(start, end, array):
+    # array에 원소가 하나일 때,
     if start == end:
         return end
-    if len(array) == 2:
-        return card_game(start, end, refer)
+
+    # array에 원소가 2개 이상일 때,
     else:
         middle = (start + end) // 2
         return card_game(tournament(start, middle, array[:middle + 1]), tournament(middle + 1, end, array[middle+1:]), refer)
@@ -34,5 +25,16 @@ for tc in range(1,T+1):
     print(f'#{tc} {tournament(0, n-1, refer)+1}')
 
 
+'''
+        1
+    2       3
+  4   5   6    7
+1 2  3 4  5 6  7 8
 
+    1
+  2     3
+ 4 5   6   7  
+    
+1 2 3 4 5 6
+'''
 

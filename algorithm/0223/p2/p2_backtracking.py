@@ -20,11 +20,6 @@ def construct_candidator(arr, k, N, c):
     c[1] = False
     return 2
 
-def construct_candidator_for_permutation(arr, k, N, c):
-    # 부분 집합을 구할 것이기 때문에
-    # 넣거나 안넣거나 2가지 경우의 수 밖에 없음
-
-    return 2
 
 def backtracking(arr, k, N, result):
     # 유망성 조사를 할 리스트

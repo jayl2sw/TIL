@@ -2,12 +2,12 @@ import sys
 sys.stdin = open('input.txt')
 
 
-def find_start(N, array):
+def start(N, array):
     # 출발점 찾기
     for i in range(N):
         for j in range(N):
             if array[i][j] == 3:
-                return i, j
+                return maze(N, array, i, j)
 
 
 def maze(N, array, r, c):
@@ -19,14 +19,12 @@ def maze(N, array, r, c):
             continue
 
         if array[nr][nc] == 2:
-            global success
-            success = 1
-            return
+            return 1
 
         if array[nr][nc] == 0 and [nr, nc] not in visited:
             visited.append([r, c])
-            maze(N, array, nr, nc)
-
+            if maze(N, array, nr, nc):
+                return 1
     return 0
 
 
@@ -38,7 +36,5 @@ for tc in range(1, T+1):
     N = int(input())
     array = [list(map(int, input())) for _ in range(N)]
     visited = []
-    success = 0
-    r, c = find_start(N, array)
-    maze(N, array, r, c)
+    success = start(N, array)
     print(f'#{tc} {success}')

@@ -1,31 +1,24 @@
 import sys
 sys.stdin = open('input.txt')
 
-def rate(char):
-    if char == '*' or char == '/':
-        return 2
-    elif char == '+' or char == '-':
-        return 1
-    elif char == '(':
-        return 0
 
 def manage_stack_char(stack, char):
+    rate = {'*': 2, '/': 2, '+': 1, '-': 1, '(': 0}
     global result
     if not stack:
         stack.append(char)
     else:
-        if rate(char) > rate(stack[-1]):
+        if rate[char] > rate[stack[-1]]:
             stack.append(char)
         else:
-            while rate(stack[-1]) >= rate(char):
+            while rate[stack[-1]] >= rate[char]:
                 result += stack.pop()
                 if not stack:
                     break
             if not stack:
                 pass
-            elif stack[-1] == '(':
-                stack.pop()
             stack.append(char)
+
 
 def change_to_postfix(string):
     global result
@@ -55,7 +48,7 @@ def change_to_postfix(string):
             manage_stack_char(stack, char)
 
 
-    for i in range(len(stack)):
+    while len(stack)>1:
         result += stack.pop()
 
     return result

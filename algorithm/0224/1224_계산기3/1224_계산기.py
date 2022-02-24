@@ -15,8 +15,6 @@ def manage_stack_char(stack, char):
                 result += stack.pop()
                 if not stack:
                     break
-            if not stack:
-                pass
             stack.append(char)
 
 
@@ -34,19 +32,13 @@ def change_to_postfix(string):
                 raise 'Wrong String'
             while stack[-1] != '(':
                 result += stack.pop()
-                if not stack:
-                    break
             stack.pop()
 
         elif char not in non_number:
             result += char
 
-        elif char == '*' or char == '/':
+        else:
             manage_stack_char(stack, char)
-
-        elif char == '+' or char == '-':
-            manage_stack_char(stack, char)
-
 
     while len(stack)>1:
         result += stack.pop()

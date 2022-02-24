@@ -3,27 +3,27 @@ sys.stdin = open('input.txt')
 
 
 def construct_candidator(arr, k, N, c, visited):
-
     for i in range(N):
         if i not in visited:
             c[i] = arr[k][i]
+    return
 
-    return N
-
+# arr: input array
+# k: 현재 더해야 할 행의 index
+# n: arr의 행 수
+# total: n-1행까지 더한 총 값
+# visited: 지금까지 조사한 열 index들의 list
 
 def min_total(arr, k, n, total, visited):
-    global cnt
-    cnt += 1
     global min_v
-    if k == n:
-        if min_v > total:
-            min_v = total
-        return
-
     if total >= min_v:
         return
 
-    c = [0] * 10
+    if k == n:
+        min_v = total
+        return
+
+    c = [0] * MAXCANDIDATES
     construct_candidator(arr, k, n, c, visited)
     for i in range(n):
         if c[i] != 0:
@@ -32,13 +32,13 @@ def min_total(arr, k, n, total, visited):
 
 T = int(input())
 for tc in range(1, T+1):
+    MAXCANDIDATES = 10
     n = int(input())
     array = [list(map(int,input().split())) for _ in range(n)]
     min_v = int(1e9)
-    cnt = 0
+
     min_total(array, 0, n, 0, [])
-    cnt += 1
-    print(f'#{tc} {min_v} \t count: {cnt}')
+    print(f'#{tc} {min_v}')
 
 
 
