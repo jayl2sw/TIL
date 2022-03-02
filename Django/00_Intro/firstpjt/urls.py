@@ -20,4 +20,7 @@ from articles import views
 urlpatterns = [
     path('admin/', admin.site.urls), # 처음에 만들어져있는 주소 8000후의 주소에 admin/이 있을 때, 호출된다.
     path('index/', views.index), # end-slash / 꼭 써줘야 한다. trailing-comma (이후에 바로 작성 할 수 있도록)
+    path('greeting/', views.greeting),
+    path('dinner/', views.dinner),
+    path('dtl-practice', views.dtl_practice),
 ]
