@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Main{% endblock title %}
+
+{% block content %}
+  <h1>Dinner 조사</h1>
+  <form action="dinner/">
+    <label for="menu">저녁메뉴</label>
+    <input type="text", id='menu', name='menu'>
+    <label for="numberofpeople">인원 수</label>
+    <input type="number", id='numberofpeople', name='numberofpeople', min='1', max='6'>
+    <input type="submit">
+  </form>
+
+{% endblock content %}

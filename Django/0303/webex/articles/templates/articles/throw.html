@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  {% comment %} 
+  Throw라는 이름의 input 태크는 catch/경로로
+  message라는 키와 직접 입력한 value를 전송
+  {% endcomment %}
+  <h1>던진다~</h1>
+  {% comment %} 
+    catch/ => root/throw/catch/ 
+    /catch/ => root/catch
+  {% endcomment %}
+  {% comment %} name에 따라서 바뀐다. {% endcomment %}
+  
+  <a href="{% url 'articles:index' %}">articles index</a>
+  <a href="{% url 'pages:index' %}">pages index</a>
+  <a href="{% url 'articles:hello' user %}">hello</a>
+
+  <form action="{% url 'articles:catch' %}">  
+    <label for="throw"></label>
+    <input type="text", id="throw", name="message">
+    <input type="submit">
+  </form>
+</body>
+</html>

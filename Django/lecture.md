@@ -76,6 +76,7 @@ $ django-admin startproject project_name .
 $ python manage.py runserver
 
 # 5. App 생성
+$ python manage.py startapp application_name
 # 6. App 등록
 ```
 
@@ -83,7 +84,7 @@ $ python manage.py runserver
 
 #### 프로젝트 구조
 
-`\__init__.py`(x) : Python에게 이 디렉토리를 하나의 Python 패키지로 다루도록 지시
+`__init__.py`(x) : Python에게 이 디렉토리를 하나의 Python 패키지로 다루도록 지시
 
 `asgi.py`(x) : Djanggo 애플리케이션이 비동기식 웹 서버와 연결 및 소통하는 것을 도움
 
@@ -147,3 +148,73 @@ settings.py => INSTALLED_APPS
 * 생성 후 등록!
 
 ![image-20220302102500427](lecture.assets/image-20220302102500427.png)
+
+
+
+### Django Template
+
+* 데이터 표현을 제어하는 도구이자 표현에 관련된 로직
+* URL => View => Template
+
+
+#### Django Teplate Language(DTL)
+
+* 조건, 반복, 변수 치환, 필터 등의 기능 제공
+
+* Python Logic이 HTML에 포함 된 것이 아니며 프로그래밍적 로직이 아니라 프레젠테이션을 표현하기 위한 것
+
+* Python처럼 일부 프로그래밍 구조를 사용할 수 있지만 이것은 해당 Python 코드로 실행되는 것이 아님.
+
+  
+
+* ##### Variable `{{ variable }}`
+
+  * render()를 사용하여 views.py에서 정의한 변수를 template 파일로 넘겨 사용하는 것
+  * dot(.)를 사용하여 변수 속성에 접근할 수 있음
+  * render()의 세번째 인자로 {'key':value}와 같이 딕셔너리 형태로 넘겨주며, 여기서 정의한 key에 해당하는 문자열이 template에서 사용가능한 변수명이 됨
+
+* ##### Filter `{{ variable|filter }}`
+
+  * 표시할 변수를 수정할 때 사용
+
+* ##### Tags
+
+  * 출력 텍스트를 만들거나, 반복 또는 논리를 수행하여 제어 흐름을 만드는 등 변수보다 복잡한 일들을 수행
+  * 일부 태그는 시작과 종료 태그가 필요
+
+* ##### Comment `{# #}`
+
+  * 주석을 표현하기 위해 사용
+
+
+
+#### Template inheritance (템플릿 상속)
+
+* 코드의 재사용성에 초점을 맞춤
+
+* 템플릿 상속을 활용하면 사이트의 모든 공통 요소를 포함하고, 하위 템플릿이 재정의(override) 할 수 있는 블록을 정의하는 기본 "skeleton"템플릿을 만들 수 있음
+
+* `tags`
+
+  ```django
+  {% extends '' %}
+  자식 템플릿이 부모 템플릿을 확장한다는 것을 알림
+  반드시 템플릿 최 상단에 작성 되어야함
+  
+  {% block content %} {% endblock %}
+  하위 템플릿에서 재지정(override)할 수 있는 블록을 정의
+  
+  {% include '_name' %}
+  템플릿을 로드하고 현재 페이지로 렌더링
+  템플릿 내에 다른 템플릿을 "포함(including)"하는 방법
+  ```
+
+
+
+#### Django Template 철학
+
+* 표현과 로직(view)을 분리
+  * 템플릿 시스템은 표현을 제어하는 도구이자 표현에 관련된 로직일 뿐이라고 생각한다.
+  * 즉, 템플릿은 이러한 기본 목표를 넘어서지 않아야한다.
+* 중복을 배제
+  * 상속의 기초
