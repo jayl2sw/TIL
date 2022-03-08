@@ -218,3 +218,235 @@ settings.py => INSTALLED_APPS
   * 즉, 템플릿은 이러한 기본 목표를 넘어서지 않아야한다.
 * 중복을 배제
   * 상속의 기초
+
+
+
+### Model
+
+* 단일한 데이터에 대한 정보를 가짐
+  * 사용자가 저장하는 데이터들의 필수적인 필드들과 동작들을 포함
+* 저장된 데이터베이스의 구조
+* 일반적으로 각각의 Model은 하나의 데이터베이스 테이블에 매핑됨
+
+
+
+#### Database
+
+* 데이터베이스(DB)
+  * 체계화된 데이터의 모임
+* 쿼리(Query)
+  * 데이터를 조회하기 위한 명령어
+  * 조건에 맞는 데이터를 추출하거나 조작하는 명령어
+  * Query를 날린다. => DB를 조작한다.
+
+##### 데이터 베이스의 기본구조
+
+* 스키마
+  * 데이터베이스에서 자료의 구조, 표현방법, 관계 등을 정의한 구조(structure)
+* 테이블(Table)
+  * 열(column) : 필드(field) or 속성
+  * 행(row) : 레코드(record) or tuple
+
+
+
+
+
+#### ORM(Object-Relational-Mapping)
+
+* 객체 지향 프로그래밍 언어를 사용하여 호환되지 않는 유형의 시스템간에 데이터를 변환하는 프로그래밍 기술
+
+* OOP 프로그래밍에서 RDBMS을 연동할 때, 데이터베이스와 객체 지향 프로그래밍 언어 간의 호환
+
+* 장점
+  * SQL을 잘 알지 못해도 DB조작이 가능
+  * SQL의 절차적 접근이 아닌 객체 지향적 접근으로 인한 높은 생산석
+* 단점
+  * ORM만으로 완전한 서비스를 구현하기 어려운 경우가 있음
+* 현대 웹 프레임워크의 요점은 웹 개발의 속도를 높이는 것
+* DB를 객체로 조작하기 위해 ORM사용!
+
+
+
+#### 사용 모델 필드
+
+* CharField(max_length=None, **options)
+  * 길이의 제한이 있는 문자열을 넣을 때 사용하는 Field
+* TextField(**options)
+  * 글자의 수가 많을 때 사용
+  * max_length 옵션 작성시 자동 양식 필드인 textarea 위젯에 반영은 되지만 모델과 데이터베이스 수준에는 적용되지 않음
+    * max_length사용은 CharField에서 사용해야함 
+
+
+
+#### Migrations
+
+* DJANGO가 모델에 생긴 변화를 알 수 있게 하는 것
+
+* DB 직접 수정은 좋지 않다.
+* 생성 했으면 생성한 내용만 남겨 놓기
+
+
+
+1. makemigrations (설계도 생성)
+
+   * model을 변경한 것에 기반한 새로운 마이그레이션(like 설계도)을 만들 때 사용
+
+   ```bash
+   $python manage.py makemigrations
+   ```
+
+   
+
+2. migrate (DB에 반영)
+
+   * 마이그레이션을 DB에 반영하기 위해 사용
+   * 설계도를 실제 DB에 반영하는 과정
+   * 모델에서의 변경 사항들과 DB의 스키마가 동기화를 이룸
+
+   ```bash
+   $ python manage.py migrate app_name migration_name
+   ```
+
+3. sqlmigrate
+
+   * 마이그레이션에 대한 SQL 구문을 보기 위해 사용
+   * 마이그레이션이 SQL문으로 어떻게 해석되어서 동작할지 미리 확인 할 수 있음
+
+   ```bash
+   $ python manage.py sqlmigration
+   ```
+
+   
+
+4. showmigrations
+
+   * 프로젝트 전체의 마이그레이션 상태를 확인하기 위해 사용
+   * 마이그레이션 파일들이 migrate 됐는지 안됐는지 여부를 확인할 수 있읍
+
+
+
+### Databse API
+
+* Database를 조작하기 위한 도구 
+
+* django가 기본적으로 ORM을 제공함에 따른 것으로 DB를 편하게 조작할 수 있도록 도움
+
+* Model을 만들면 django는 객체들을 만들고 읽고 수정하고 지울 수 있는
+
+* Making Queries
+  * `class_name.manager.QuerySetApi()` `[Article.objects.all()]`
+  
+* manager
+  *  django 모델에 데이터베이스 query 작업이 제공되는 인터페이스
+  * 기본적으로 모든 django 모델 클래스에 objects 라는 Manager을 추가
+  
+* QuerySet
+  * 데이터베이스로부터 전달받은 객체 목록
+  
+  * queryset 안의 객체는 0개, 1개 혹은 여러개일 수 있음
+  
+  * 데이터베이스로부터 조회, 필터, 정렬  등을 수행할 수 있음
+  
+  * create, delete, read, filter 등
+  
+    
+
+#### Django Shell
+
+* 일반 Python shell을 통해서는 장고 프로젝트 환경에 접근할 수 없음
+
+* 그래서 장고 프로젝트 설정이 load된 Python shell을 활용해 DB API 구문 테스트 진행
+
+* 기본 Django_shell 보다 더 많은 기능을 제공하는 shell_plus를 사용해서 진행
+
+  ```bash
+  $ pip install ipython django-extentions
+  ```
+
+  
+
+### CRUD
+
+* 대부분의 컴퓨터 소프트웨어가 가지는 기본적인 데이터 처리 기능인
+
+  Create(생성), Read(조회), Update(수정), Delete(삭제)를 묶어서 일컫는 말
+
+
+
+#### Create 
+
+1. 인스턴스 만들고 값 저장하고 save하기 => save 하기 전에 유효성 검사 가능
+
+2. 인스턴스 만들 때 부터 초기값과 함께 인스턴스 생성 
+
+3. QuerySetApi사용하기 - Article.objects.create()하기 => 바로 생성된다.
+
+   
+
+#### Read
+
+* `all()`
+  * 현재 QuerySet 전체 조회 시 사용
+
+* `get()`
+  * 딱 하나를 찾을 때 사용
+  * 여러개의 항목이 찾아질 때 오류
+    * MultipleObjectReturned
+    * 사용할 때는 고유성을 보장하는 필드 사용해야 한다. ex)PK
+  * 없는 항목 찾을 때 오류
+    * DoesNotExsist
+
+* `filter()`
+  * 주어진 lookup 매개변수와 일치하는 객체를 포함하는 새 QuerySet을 반환
+  * 정확하게 일치할 때만 받아 올 수 있다
+
+
+
+#### Update
+
+* get으로 정확히 하나 가져오는 것부터 시작
+
+  ```python
+  article = Article.Objects.get(pk=1)
+  ```
+
+* 수정
+
+  ```python
+  article.title = '장고'
+  article.content = '첫번째 게시물'
+  ```
+
+* 저장 `save()`
+
+  ```python
+  article.save()
+  ```
+
+  
+
+#### Delete
+
+* get으로 정확히 하나 가져오는 것부터 시작
+
+  ```python
+  article = Article.Objects.get(pk=1)
+  ```
+
+* 삭제 `delete()`
+
+  ```python
+  article.delete()
+  ```
+
+
+
+
+### 관리자 만들기
+
+```bash
+$ python manage.py createsuperuser
+
+
+```
+
