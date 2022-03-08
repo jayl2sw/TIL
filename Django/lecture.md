@@ -446,7 +446,5 @@ settings.py => INSTALLED_APPS
 
 ```bash
 $ python manage.py createsuperuser
-
-
 ```
 
