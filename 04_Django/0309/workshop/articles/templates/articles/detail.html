@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>DETAIL</h1>
+  <hr>
+  <div class="d-flex align-items-baseline">
+    <h2>{{ article.title }}</h2>
+    {% if article.created_at != article.updated_at %}<span class="fs-6 mx-1">[수정됨]</span>{% endif %}
+  </div>
+  
+  <p>{{ article.content }}</p>
+  <p>작성일: {{ article.created_at }}</p>
+  <p>수정일: {{ article.updated_at }}</p>
+
+  <div class="d-flex">
+    <form action="{% url 'articles:detail_edit' article.pk %}">
+      <input type="submit" value="EDIT">
+    </form>
+    <form action="{% url 'articles:delete' article.pk %}" method="POST" class="mx-1">
+      {% csrf_token %}
+      <input type="submit" value="DELETE">
+    <a href="{% url 'articles:index' %}">BACK</a>   
+  </div>
+  
+  
+  </form>
+  
+  
+{% endblock content %}
