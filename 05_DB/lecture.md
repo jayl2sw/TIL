@@ -99,3 +99,102 @@ SELECT DISTINCT COLUMN FROM TABLE_NAME;
 UPDATE TABLE_NAME SET COLUMN1=VALUE1, COLUMN2=VALUE2 ... WHERE CONTIDIONs;
 ```
 
+
+
+### WHERE
+
+```sqlite
+SELECT COLUMN1, COLUMN2, .... FROM TABLE_NAME WHERE C;
+----------------------------------------------------------
+ex)
+SELECT * FROM users WHERE age >= 30;
+SELECT age, first_name FROM users WHERE age>=30 and last_name='김';
+```
+
+
+
+### SQLite Aggregate Function (집계함수)
+
+* COUNT(*), AVG, SUM, MIN, MAX
+
+  ```sqlite
+  SELECT COUNT(COLUMN_NAME) FROM TABLE_NAME;
+  
+  SELECT AVG(COLUMN_NAME) FROM TABLE_NAME WHERE CONDITIONS;
+  
+  SELECT COLUMN_NAME1, MAX(COLUMN_NAME2) FROM TABLE_NAME;
+  
+  SELECT AVG(COLUMN_NAME) FROM TABLE_NAME WHERE CONDITIONS;
+  ```
+
+  
+
+### LIKE
+
+* wildcards
+  * % (percent sign) : 이자리에 문자열이 있을 수도, 없을 수도 있다.
+  * _ (underscore): 반드시 이 자리에 한개의 문자가 존재해야 한다.
+
+```sqlite
+SELECT * FROM TABLE_NAME WHERE COLUMN_NAME LIKE 'WILDCARD_PATTERN';
+```
+
+
+
+### ORDER BY clause
+
+* ORDER BY
+  * 조회 결과 집합을 정렬
+  * SELECT 문에 추가하여 사용
+  * 정렬 순서를 위한 2개의 keyword 제공
+    * ASC - 오름차순 (default)
+    * DESC - 내림차순
+
+```sqlite
+SELECT * FROM TABLE_NAME ORDER BY COLUMN_NAME ASC;
+SELECT * FROM TABLE_NAME ORDER BY COLUMN_NAME1, COLUMN_NAME2 DESC;
+```
+
+
+
+### GROUP BY clause
+
+* GROUP BY
+  * 행 집합에서 요약 행 집합을 만듦
+  * SELECT 문의 optional 절
+  * 선택된 행 그룹을 하나 이상의 열 값으로 요약 행으로 만듦
+  * 문장에 WHERE 절이 포함된 경우 반드시 WHERE 절 뒤에 와야 함
+
+```sqlite
+SELECT COLUMN_NAME, AGGREGATE_FUNCTION(COLUMN_NAME2) FROM TABLE_NAME GROUP BY COLUMN_NAME1, COLUMN_NAME2;
+```
+
+
+
+### ALTER TABLE
+
+* ALTER TABLE의 3가지 기능
+  1. table 이름 변경
+  2. 테이블에 새로운 column 추가
+  3. column 이름 수정
+  4. column 삭제
+
+```sqlite
+ALTER TABLE TABLE_NAME RENAME TO NEW_TABLE_NAME;
+
+-- 새로운 컬럼 추가
+ALTER TABLE TABLE_NAME ADD COLUMN NEW_COLUMN_NAME TEXT NOT NULL; -- 에러 발생 (기존 데이터는 널값이기 때문에)
+
+-- 1. NOT NULL 설정 없이 추가하기
+ALTER TABLE TABLE_NAME ADD COLUMN NEW_COLUMN_NAME TEXT;
+
+-- 2. NOT NULL 설정 유지하면서 추가하기
+ALTER TABLE TABLE_NAME ADD COLUMN NEW_COLUMN_NAME TEXT NOT NULL DEFAULT DEFAULT_VALUE;
+
+-- 컬럼 이름 바꾸기
+ALTER TABLE TABLE_NAME RENAME COLUMN COLUMN_NAME TO NEW_COLUMN_NAME:
+
+-- 컬럼 지우기
+ALTER TABLE TABLE_NAME DROP COLUMN COLUMN_NAME;
+```
+

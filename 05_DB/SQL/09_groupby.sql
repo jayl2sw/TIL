@@ -1,0 +1,1 @@
+SELECT last_name, COUNT(*) as NumberofPeople FROM users GROUP BY last_name;
