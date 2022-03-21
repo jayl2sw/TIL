@@ -26,8 +26,6 @@ def solution(N):
     else:
         return int(tree[N])
 
-
-
 for tc in range(1, 11):
     N = int(input())
     tree = [-1] * (N+1)
