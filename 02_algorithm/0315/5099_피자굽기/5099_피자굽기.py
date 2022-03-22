@@ -1,7 +1,6 @@
 import sys
 sys.stdin = open('input.txt')
 
-T = int(input())
 
 def queue(arr, n):
     oven = arr[:n]
@@ -18,9 +17,13 @@ def queue(arr, n):
     return oven[0][0]
 
 
+T = int(input())
 for tc in range(1, T+1):
     n, m = map(int, input().split())
-    arr = [[i, v] for i, v in enumerate(list(map(int, input().split())), start=1)]
+    arr = list(enumerate(list(map(int, input().split())), start=1))
+    # list(enumerate(list(map(int, input().split())), start=1))
+    # [[i, v] for i, v in enumerate(list(map(int, input().split())), start=1)]
+    # print(arr)
     result = queue(arr, n)
     print(f'#{tc} {result}')
 

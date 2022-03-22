@@ -22,6 +22,7 @@ def bfs(x, y):
             nx = x + dx[i]
             ny = y + dy[i]
 
+            # 2에서 1더하면 3이 되어버려서 출발지를 3으로 도착지를 2로 함
             if check(nx, ny) and data[nx][ny] == 0:
                 data[nx][ny] = data[x][y] + 1
                 q.append((nx, ny))
