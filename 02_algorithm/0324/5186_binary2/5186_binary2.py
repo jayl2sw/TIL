@@ -12,4 +12,7 @@ for tc in range(1, T+1):
                 N *= 2
     if N:
         result = 'overflow'
+
     print(f'#{tc} {result}')
+
+
