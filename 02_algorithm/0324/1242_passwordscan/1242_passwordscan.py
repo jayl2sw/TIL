@@ -71,8 +71,8 @@ for tc in range(1, T+1):
             for k in range(len(line)):
                 b_line += bin(int(line[k], base=16)).replace('0b', '').zfill(4)         # 2진수로 나타냄
 
-            b_line = b_line.zfill(4 * M).rstrip('0')                                    # 뒤에 있는 0 떼고 앞에는 원래 길이만큼 더해줌
-                                                                                        # (사실 얼마나 더해야할지 몰라서 많이 더했습니다^__^)
+            b_line = b_line.rstrip('0')                                    # 뒤에 있는 0 떼고 앞에는 원래 길이만큼 더해줌
+
             while b_line:                                                               # 2진수로 나타낸 라인을 돌면서
                 i = findI(b_line)                                                       # i 찾기 (몇배인지)
                 tmp = b_line[len(b_line) - 56 * i:len(b_line):i]                        # 뒤에서부터 이번에 탐색할 만큼 떼어냄
