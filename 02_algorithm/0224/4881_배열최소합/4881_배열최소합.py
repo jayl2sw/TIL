@@ -8,7 +8,7 @@ def construct_candidator(arr, k, N, c, visited):
             c[i] = arr[k][i]
     return
 
-# arr: input array
+# arr: input.txt array
 # k: 현재 더해야 할 행의 index
 # n: arr의 행 수
 # total: n-1행까지 더한 총 값

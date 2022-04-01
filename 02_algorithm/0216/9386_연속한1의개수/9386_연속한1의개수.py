@@ -1,6 +1,6 @@
 import sys
 
-sys.stdin = open('/input.txt')
+sys.stdin = open('/input.txt.txt')
 
 
 def find_one1(array):

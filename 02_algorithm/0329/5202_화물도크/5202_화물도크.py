@@ -2,10 +2,10 @@ import sys
 sys.stdin = open('input.txt')
 T = int(input())
 # for tc in range(1, T+1):
-#     N = int(input())
+#     N = int(input.txt())
 #     # 종료 지점을 우선으로 정렬 진행
 #     # ex) 4-8과 3-9 중에는 전자가 더 좋기 때문에
-#     arr = sorted([list(map(int, input().split())) for _ in range(N)], key=lambda x: (x[1], x[0]))
+#     arr = sorted([list(map(int, input.txt().split())) for _ in range(N)], key=lambda x: (x[1], x[0]))
 #     dock = [arr[0]]
 #
 #     for freight in arr:

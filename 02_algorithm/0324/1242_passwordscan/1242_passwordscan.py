@@ -62,8 +62,8 @@ T = int(input())
 for tc in range(1, T+1):
     passwords = set()                                                                   # 찾은 패스워드를 넣을 set
     N, M = map(int, input().split())                                                    # N, M
-    arr = list(set(input().strip('0') for _ in range(N)))                               # input 받음
-    # arr = list(set(input().strip().strip('0') for _ in range(N)))
+    arr = list(set(input().strip('0') for _ in range(N)))                               # input.txt 받음
+    # arr = list(set(input.txt().strip().strip('0') for _ in range(N)))
 
     for line in arr:
         if line:                                                                        # 0만 있는 곳이 아닐 때,

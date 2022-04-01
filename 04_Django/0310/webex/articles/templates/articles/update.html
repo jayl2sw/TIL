@@ -3,7 +3,7 @@
 {% block content %}
   <h1>UPDATE PAGE</h1>
   <form method="POST">
-    <!-- input type:hidden -->
+    <!-- input.txt type:hidden -->
     {% csrf_token %}
     <label for="title">제목 : </label>
     <input type="text" id="title" name="title" value="{{ article.title }}"> <br>

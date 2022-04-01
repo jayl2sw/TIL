@@ -1,5 +1,5 @@
 # import sys
-# sys.stdin = open('input.txt')
+# sys.stdin = open('input.txt.txt')
 password = {
     '0001101': 0,
     '0011001': 1,

@@ -2,11 +2,11 @@
 arr = list(map(int, input().split()))
 
 # 띄워쓰기 없이 들어올 때
-# arr = list(map(int, input))
-# arr = [int(x) for x in input()]
+# arr = list(map(int, input.txt))
+# arr = [int(x) for x in input.txt()]
 
 # 문자로 저장
-# arr = list(input())
+# arr = list(input.txt())
 
 num = 456789  # Baby Gin 확인할 6자리 수
 c = [0] * 12  # 6자리 수로부터 각 자리 수를 추출하여 개수를 누적할 리스트
