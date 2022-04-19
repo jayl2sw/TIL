@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>DETAIL</h1>
+  <h3>{{ article.pk }}번째 글</h3>
+  <p>작성자:{{ article.user }}</p>
+  <hr>
+  <p>제목 : {{ article.title }}</p>
+  <p>내용 : {{ article.content }}</p>
+  <p>작성 시각 : {{ article.created_at }}</p>
+  <p>수정 시각 : {{ article.updated_at }}</p>
+  <hr>
+  {% if request.user == article.user %}
+    <a href="{% url 'articles:update' article.pk %}">수정</a>
+    <form action="{% url 'articles:delete' article.pk %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="삭제">
+    </form>
+  {% endif %}
+  <a href="{% url 'articles:index' %}">back</a>
+  <hr>
+  {% if request.user.is_authenticated %}
+  <form action="{% url 'articles:comment_create' article.pk %}" method="POST">
+    {% csrf_token %}
+    {{ comment_form.as_p }} 
+    <input type="submit">
+  </form>
+  {% else %}
+    <a href="{% url 'accounts:login' %}">[댓글을 작성하려면 로그인하세요]</a>
+
+  {% endif %}
+  
+  <hr>
+  <h4>댓글 목록</h4>
+  {% if comments %}
+  <p><b>{{ comments|length }}개의 댓글이 있습니다.</b></p>
+  {% endif %}
+  <ul>
+    {% for comment in comments %}
+    <li>
+      <div class='d-flex justify-content-between'>
+        <p>작성자: {{ comment.user }}</p>
+        {% if request.user == comment.user %}
+          <form action="{% url 'articles:comment_delete' article.pk comment.pk %}" method="POST"  class='d-inline'>
+            {% csrf_token %}
+            <input type="submit" value="삭제" class='btn text-decoration-underline'>
+          </form>
+        {% endif %}
+      </div>
+      <p>{{ comment.content }}</p>
+    </li>
+    {% empty %}
+      <p>댓글 없음</p>
+    {% endfor %}
+
+  </ul>
+  <hr>
+{% endblock content %}
