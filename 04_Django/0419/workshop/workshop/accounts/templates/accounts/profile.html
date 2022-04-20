@@ -1,17 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-{{ person.username }}님의 프로필
+<div>
+  {% if person.profile_image %}
+    <img src="{{ person.profile_image.url }}" alt="{{ person.profile_image }}" class="border border-dark rounded-circle" style='height:100px; width:100px'>
+  {% else %}
+    <img src="{% static 'images/default.jpg' %}" alt="default" class="border border-dark rounded-circle" style='height:100px; width:100px'>
+  {% endif %}
+  <h1>{{ person.nickname }}님의 프로필</h1>
+</div>
+<p>팔로워: {{ person.followers.all|length }} </p>
+<p>팔로잉: {{ person.followings.all|length }}</p>
 {% if person != request.user %}
-<form action="" method="POST">
-{% if request.user in person.followers.all %}
-<button type='submit'>팔로우 취소</button>
-{% else %}
-<button type='submit'>팔로우</button>
-{% endif %}
+<form action="{% url 'accounts:follow' person.username %}" method="POST">
+  {% csrf_token %}
+  {% if request.user in person.followers.all %}
+  <button type='submit'>팔로우 취소</button>
+  {% else %}
+  <button type='submit'>팔로우</button>
+  {% endif %}
 </form>
 {% endif %}
 <hr>
+{% if request.user == person %}
+  <h2>내가 작성한 글</h2>
+  {% for article in person.article_set.all %}
+  <p>{{ article.title }}</p>
+  {% endfor %}
+
+  <hr>
+  <h2>내가 좋아요한 글</h2>
+  {% for article in person.like_articles.all %}
+  <p>{{ article.title }}</p>
+  {% endfor %}
+{% endif %}
+
 
 
 

@@ -5,7 +5,7 @@ class CustomUserCreationFrom(UserCreationForm):
 
     class Meta(UserChangeForm.Meta):
         model = get_user_model()
-        fields = UserCreationForm.Meta.fields
+        fields = UserCreationForm.Meta.fields + ('profile_image','nickname',)
 
 class CustomUserChangeForm(UserChangeForm):
 

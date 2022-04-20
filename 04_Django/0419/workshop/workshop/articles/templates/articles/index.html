@@ -2,6 +2,7 @@
 
 {% block content %}
 <h1>INDEX</h1>
+<hr>
 
 <a href="{% url 'articles:create' %}">CREATE</a>
 {% for article in articles %}
@@ -9,7 +10,7 @@
   <p>{{ article.pk }}</p>
   <p>제목: <a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a></p>
   <p>작성자: {{ article.user }}</p>
-
+  <hr>
 </div>
 {% endfor %}
 {% endblock content %}

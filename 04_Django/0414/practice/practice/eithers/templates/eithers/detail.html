@@ -1,0 +1,98 @@
+{% extends 'detail_base.html' %}
+
+{% block subtitle %}
+DETAIL
+{% endblock subtitle %}
+
+{% block detail %}
+<div id='detail'>
+  <table class="table my-1">
+    <thead>
+      <tr class="fs-2 fw-bold text-center">
+        <th scope="col">{{ article.title }}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          <div class='d-flex justify-content-end align-items-center'>
+            <span>{{ article.created_string }}</span>
+            <form action="{% url 'eithers:delete' article.pk %}" method="POST" class="d-inline">
+              {% csrf_token %}
+              <button class="btn text-decoration-underline">삭제</button>
+            </form>
+          </div>
+          <div class='my-5'>
+            <div class='d-flex justify-content-between fs-3'>
+              <p class='mx-0 px-0 text-primary'>{{ article.blue }}</p>
+              <p class='mx-0 px-0 text-danger'>{{ article.red }}</p>
+            </div>
+            <div class="progress" style="height:70px">
+              <div class="progress-bar progress-bar-striped progress-bar-animated fs-5" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: {{ blue_p }}%">{{ blue_p }}%</div>
+              <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger fs-5" role="progressbar" aria-valuenow="100" aria-valuemin="25" aria-valuemax="100" style="width: {{ red_p }}%">{{ red_p }}%</div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% endblock detail %}
+
+{% block comment %}
+<div id='comment'>
+  <table class="table my-1 table-borderless">
+    <thead>
+      <tr class="fs-6 text-center">
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id='create_comment'>
+          <form action="{% url 'eithers:create_comment' article.pk %}" method="POST" class='row'>
+            {% csrf_token %}
+            <div class="col-2">
+              {{ comment_form.color }}
+            </div>
+            <div class="col-9">
+              {{ comment_form.content }}
+            </div>
+            <div class="col-1">       
+              <button class="btn btn-dark px-0" style='width:60px;' type='submit'>작성</button>  
+            </div>
+          </form>
+        </td>
+      </tr>
+      <div id="comment_list">
+        {% for comment in comments %}
+        <tr>
+          <td>
+          {% if comment.color == False %}
+            <div class="row py-2 mx-2 px-2 rounded-3 fs-5 bg-danger bg-opacity-25">
+          {% else %}
+            <div class="row py-2 mx-2 px-2 rounded-3 fs-5 bg-primary bg-opacity-25">
+          {% endif %}
+              <div class="col-2">{{ comment.user }}</div>
+              <div class="col-7">{{ comment.content }}</div>
+              <div class="col-2">{{ commnet.created_string }}</div>
+              <div class="col-1">
+                {% if request.user == comment.user %}
+                  <form action="{% url 'eithers:delete_comment' article.pk comment.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn px-0 text-decoration-underline mx-0 my-0 px-0 py-0" style='width:60px;'>삭제</button>
+                  </form>
+                {% endif %}
+              </div>  
+            </div>
+            
+            </td>
+          </tr>
+        {% endfor %}
+        </div>
+    </tbody>
+
+  </table>
+</div>
+{% endblock comment %}

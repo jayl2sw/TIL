@@ -474,3 +474,84 @@ $ python manage.py createsuperuser
 
 개발자들이 애플리케이션을 보다 효율적으로 구축할 수 있도록 지원하며 애플리케이션, 데이터 및 사용자 사이를 연결하는 요소처럼 작동
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### REST API
+
+#### HTTP (HyperTextTransferProtocol)
+
+웹 상에서 컨텐츠를 전송하기 위한 약속
+
+* 기본특성
+  * Stateless
+  * Connectionless
+* 쿠키와 세션을 통해 서버 상태를 요청과 연결하도록 함
+
+![image-20220420101800009](lecture.assets/image-20220420101800009.png)
+
+#### HTTP request methods
+
+* 자원에 대한 행위를 정의
+* 주어진 리소스에 수행하길 원하는 행동을 나타냄
+* HTTP MEthod 예시
+  * GET, POST(작성), PUT(수정), DELETE(삭제)
+
+
+
+#### HTTP response status codes
+
+* 특정 HTTP 요청이 성공적으로 완료되었는지 여부를 나타냄
+  1. Informational response (1 ~ )
+  2. Successful response (2 ~ )
+  3. Redirection message (3 ~ )
+  4. Client error response (4 ~ )
+  5. Server error response (5 ~ )
+
+
+
+#### 웹에서 리소스 식별
+
+* HTTP 요청의 대상을 리소스(resource, 자원)이라고 함
+* 각 리소스는 식별을 위해 HTTP 전체에서 사용되는 URI(Uniform Resource Identifier)로 식별됨
+
+
+
+#### URI (Uniform Resource Identifier)
+
+* 통합자원 식별자
+* 인터넷의 자원을 식별하는 유일한 주소 (정보의 자원을 표현)
+* 하위 개념
+  * URL, URN
+* URI는 크게 URL과 URN으로 나눌 수 있지만 URN을 사용하는 비중이 매우 작다.
+
+
+
+#### URL, URN
+
+* `URL(Uniform Resource Locator)`
+  * 통합 자원 위치
+  * 네트워크 상에 자원이 어디 있는지 알려주기 위한 약속
+  * 현재 추상화된 의미론적 구성
+  * '웹 주소', '링크'라고도 불림
+* `URN(Uniform Resouce Name)`
+  * 통합 자원 이름
+  * URL과 달리 자원의 위치에 영향을 받지 않는 유일한 이름 역할을 함
+  * 
+
+* 
